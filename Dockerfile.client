@@ -1,0 +1,21 @@
+FROM ubuntu:16.04
+
+# install basic dependencies
+RUN apt-get update && apt-get install -y build-essential
+RUN apt-get update && apt-get install -y libtbb-dev
+
+RUN apt-get update && apt-get install -y \
+    python-pip 
+
+RUN python -V
+# add your dependencies to the list below, separated via whitespace
+RUN pip install --no-cache-dir requests numpy pandas
+
+RUN python -c "import numpy; print(numpy.__version__)"
+
+
+COPY client_app/ /app
+
+WORKDIR /app
+
+CMD ["python", "client_app.py"]
