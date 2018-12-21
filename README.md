@@ -11,10 +11,10 @@ Please read the instructions below in order to get an insight how you can get st
 ## About this repository
 
 This repository contains the following project structure:
-`dataset` folder should contain your training datasets `in.csv` and `out.csv`.
-`client_app` folder for an example http-client.
-`docker-compose.yml` - defines the services to run the benchmark locally.
-`Dockerfile.client` - defines the steps needed to build container with your prediction system (if you decided to use another language than Python, you will need create your own Docker image).
+* `dataset` folder should contain your training datasets `in.csv` and `out.csv`.
+* `client_app` folder for an example http-client.
+* `docker-compose.yml` - defines the services to run the benchmark locally.
+* `Dockerfile.client` - defines the steps needed to build container with your prediction system (if you decided to use another language than Python, you will need create your own Docker image).
 
 ## Before you start
 
@@ -40,15 +40,11 @@ However you are free to use any language that suits your needs.
 3. Implement your solution as REST-based HTTP-client that issues the appropriate GET and POST requests (you may see an example implementation in `client_app.py`).
 4. The http client should connect to the host specified in the `BENCHMARK_SYSTEM_URL` environemnt variable.
 
-### Routes List:
 
 | Method     | URI                               | Action                                                            |
 |------------|-----------------------------------|-------------------------------------------------------------------|
 | `GET`      | `scene`                           | `retrieves a new scene - list of coordinates with timestamps`     |
 | `POST`     | `scene`                           | `submit the prediction result for the previously retrieved scene` |
-
-
-
 
 5. Add your dependencies to `Dockerfile.client`. If you use Python, check `line 12` of this file, and do not forget to add dependencies that your client program uses.
 6. To start the evaluation of your solution run:
@@ -70,3 +66,6 @@ After any change to your prediction system or HTTP-client, please run these comm
       $ docker-compose up --build
       ```
     To rebuild with changes you made.
+    
+  ## Questions & Answers
+  Please use the issue tracker for any questions, issues concerning the provided data set as well as integration & implementation.
